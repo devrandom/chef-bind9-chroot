@@ -136,7 +136,7 @@ search(:zones).each do |zone|
     owner node[:bind9][:user]
     group node[:bind9][:user]
     mode 0644
-    notifies :restart, "service[bind9]"
+    notifies :reload, "service[bind9]"
     variables({
       :serial => zone['zone_info']['serial'] || Time.new.strftime("%Y%m%d%H%M%S")
     })
