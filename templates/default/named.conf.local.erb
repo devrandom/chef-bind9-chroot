@@ -15,6 +15,17 @@ zone "<%= conf["domain"] %>" IN {
     <%= ip %>;
   <% end %>
   };
+<% if (conf["notify"]) %>
+  notify <%= conf["notify"] %>;
+<% end %>
+  // Optional also-notify
+<% if (conf["also_notify"]) %>
+  also-notify {
+  <% conf["also_notify"].each do |ip| -%>
+    <%= ip %>;
+  <% end %>
+  };
+<% end %>
 };
 
 <% end %>
